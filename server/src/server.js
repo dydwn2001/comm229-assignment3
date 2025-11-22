@@ -25,6 +25,8 @@ app.use('/',projectCtrl)
 app.use('/',userCtrl)
 app.use('/',authCtrl)
 app.get('/', (req, res) =>{
+  
+
   res.json({"message": "Welcome to My Application Portfolio" });
 })
 
@@ -37,15 +39,7 @@ app.get('/', (req, res) =>{
 //   }
 // })
 
-app.post('/user', async(req, res) => {
-   try {
-    const project = await Projects.create(req.body);
-    
-    res.status(201).json(project);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-})
+
 
 async function connect() {
   console.log('Starting DB connection...');

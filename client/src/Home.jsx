@@ -1,6 +1,11 @@
 import { Link, UNSAFE_createClientRoutes } from "react-router-dom";
 
 export default function Home() {
+  console.log("Hello World");
+  let object1 = {"Name": "Yongju lee", "age": 3};
+  let string = JSON.stringify(object1);
+  console.log(string);
+
   return (
     
       <div className="home-content">
