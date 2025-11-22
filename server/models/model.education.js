@@ -6,6 +6,14 @@ const educationSchema = new mongoose.Schema({
   email: String,
   completion: Date,
   description:String,
+   owner: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+    },
+    created: {
+      type: Date,
+      default: Date.now,
+    },
 })
 const Education = mongoose.model('Education', educationSchema);
 
