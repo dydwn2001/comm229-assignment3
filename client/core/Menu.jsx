@@ -50,7 +50,7 @@ export default function Menu() {
         <Link to="/project">
           <Button sx={{ color: isActive(location, "/project") }}>Project</Button>
         </Link>
-        <Link to="/contact">
+        <Link to= "/contact">
           <Button sx={{ color: isActive(location, "/contact") }}>Contact</Button>
         </Link>
         

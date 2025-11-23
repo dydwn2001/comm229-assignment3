@@ -1,68 +1,159 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom";
+import auth from "../lib/auth-helper";
+import React, { useState } from "react";
+import {
+  Card,
+  CardContent,
+  Typography,
+  TextField,
+  CardActions,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+} from "@mui/material";
+import { Link } from "react-router-dom";
+import { create } from "./api-contact";
 
 export default function NewContact() {
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [contactNumber, setContactNumber] = useState("");
-  const [emailAdress, setEmailAddress] = useState("");
-  const [message, setMessage] = useState("");
+  const jwt = auth.isAuthenticated();
+  const [values, setValues] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    contactNumber: "",
+    message: "",
+    error: "",
+  });
+  const [open, setOpen] = useState(false);
 
-  const navigate = useNavigate();
-  function handelSubmit(e) {
+  const handleChange = (name) => (event) => {
+    setValues({ ...values, [name]: event.target.value });
+  };
 
-    e.preventDefault();
-    navigate("/");
-  }
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const clickSubmit = () => {
+    const contact = {
+      firstname: values.firstname || undefined,
+      lastname: values.lastname || undefined,
+      email: values.email || undefined,
+      contactNumber: values.contactNumber || undefined,
+      message: values.message || undefined,
+      
+    };
+
+    create({ t: jwt.token }, contact).then((data) => {
+      if (data.error) {
+        setValues({ ...values, error: data.error });
+      } else {
+        setOpen(true);
+      }
+    });
+  };
   return (
-    
-    <div className="contact">
-      <p>please leave your contact</p>
-      <form onSubmit={(e)=>{handelSubmit(e)}}>
-        <label>
-          Firstname<br/> 
-        <input type="text" 
-        value={firstname}
-        onChange={(e) => setFirstname(e.target.value)}
-        required ></input>
-        </label><br/>
-          <label>
-          Lastname<br/> 
-        <input type="text" 
-        value={lastname}
-        onChange={(e) => setLastname(e.target.value)}
-        required ></input>
-        </label><br/>
-        <label>
-          Email<br/> 
-        <input 
-        type="email" 
-        value={emailAdress} 
-        onChange={(e) => setEmailAddress(e.target.value)} 
-        placeholder="emailid@gmail.com"
-        required
-      />
-      </label><br/>
-       <label>
-          Contact number<br/>  
-        <input 
-        type="tel" 
-        value={contactNumber} 
-        onChange={(e) => setContactNumber(e.target.value)} 
-        placeholder="416-232-3122"
-        required
-      /><br/>
-       <label>
-          Message<br/> 
-        <textarea 
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        required ></textarea>
-        </label><br/>
-      </label>
-      <button type="submit">submit</button>
-      </form>
-      <p>{firstname} {lastname} {emailAdress}</p>
+    <div>
+      <Card
+        sx={{
+          maxWidth: 400,
+          margin: "0 auto",
+          mt: 3,
+          p: 2,
+          textAlign: "center",
+        }}
+      >
+        <CardContent>
+          <Typography variant="h6" sx={{ fontSize: 18 }}>
+            Plesae Leave your contact
+          </Typography>
+
+          <TextField
+            id="firstname"
+            label="Firstname"
+            sx={{ width: "100%", mb: 2 }}
+            value={values.firstname}
+            onChange={handleChange("firstname")}
+            margin="normal"
+          />
+          <TextField
+            id="lastname"
+            label="Lastname"
+            sx={{ width: "100%", mb: 2 }}
+            value={values.lastname}
+            onChange={handleChange("lastname")}
+            margin="normal"
+          />
+          <TextField
+            id="email"
+            label="Email"
+            sx={{ width: "100%", mb: 2 }}
+            value={values.email}
+            onChange={handleChange("email")}
+            type="email"
+            margin="normal"
+          />
+      
+          <TextField
+            id="contactNumber"
+            label="Contact number"
+            sx={{ width: "100%", mb: 2 }}
+            value={values.contactNumber}
+            onChange={handleChange("contactNumber")}
+            type="contact"
+            margin="normal"
+          />
+          <TextField
+            id="message"
+            label="Message"
+            sx={{ width: "100%", mb: 2 }}
+            value={values.message}
+            onChange={handleChange("message")}
+            margin="normal"
+            multiline  
+            rows={4}        
+          />
+
+          {values.error && (
+            <Typography color="error" sx={{ mt: 1 }}>
+              {values.error}
+            </Typography>
+          )}
+        </CardContent>
+        <CardActions>
+          <Button
+            color="primary"
+            variant="contained"
+            onClick={clickSubmit}
+            sx={{ margin: "0 auto", mb: 2 }}
+          >
+            Submit
+          </Button>
+        </CardActions>
+      </Card>
+
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>New contact</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Thank you. Contect successfully went throgh.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Link to="/">
+            <Button
+              color="primary"
+              autoFocus
+              variant="contained"
+              onClick={handleClose}
+            >
+              going back.
+            </Button>
+          </Link>
+        </DialogActions>
+      </Dialog>
     </div>
-  )
+  );
 }

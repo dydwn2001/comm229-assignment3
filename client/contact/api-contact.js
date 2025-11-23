@@ -1,12 +1,16 @@
-const create = async (params, credentials, contact) => {
+import auth from "../lib/auth-helper";
+const create = async (credentials, contact) => {
   try {
-    let response = await fetch("/api/contacts"+ params.userId, {
+   
+    let response = await fetch("/api/contacts/", {
       method: "POST",
       headers: {
+        
         Accept: "application/json",
+        "Content-Type": "application/json",
         Authorization: "Bearer " + credentials.t,
       },
-      body: contact,
+      body: JSON.stringify(contact),
     });
     return response.json();
   } catch (err) {

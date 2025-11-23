@@ -1,6 +1,6 @@
 const create = async (params, credentials, project) => {
   try {
-    let response = await fetch("/api/projects" + params.userId, {
+    let response = await fetch("/api/projects/" + params.userId, {
       method: "POST",
       headers: {
         Accept: "application/json",
