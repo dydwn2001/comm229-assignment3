@@ -5,7 +5,7 @@ import compress from "compression";
 import cors from "cors";
 import helmet from "helmet";
 import ContactRoutes from '../routes/contact.routes.js'
-import qualificationRoutes from '../routes/qualifications.routes.js'
+import educationRoutes from '../routes/education.routes.js'
 import projectRoutes from '../routes/projects.routes.js'
 import userRoutes from '../routes/user.routes.js'
 import authRoutes from '../routes/auth.routes.js'
@@ -21,7 +21,7 @@ const port = config.port || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/',ContactRoutes)
-app.use('/',qualificationRoutes)
+app.use('/',educationRoutes)
 app.use('/',projectRoutes)
 app.use('/',userRoutes)
 app.use('/',authRoutes)

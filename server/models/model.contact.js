@@ -6,10 +6,7 @@ const contactSchema = new mongoose.Schema({
  email:String,
  contactNumber: String,
  message: String,
- owner: {
-    type: mongoose.Schema.ObjectId,
-    ref: "User",
-  },
+
   created: {
     type: Date,
     default: Date.now,

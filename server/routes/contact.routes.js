@@ -3,7 +3,7 @@ import userCtrl from "../controllers/user.controller.js";
 import authCtrl from "../controllers/auth.controller.js";
 import contactCtrl from "../controllers/contact.controller.js";
 const router = express.Router();
-router.route("/api/contacts/:userId").post(authCtrl.requireSignin, contactCtrl.create);
+router.route("/api/contacts/").post(authCtrl.requireSignin, contactCtrl.create);
 router.route("/api/contacts/:userId").get(userCtrl.isAdmin,contactCtrl.list);
 router.param("contactId", contactCtrl.contactByID);
 router.route("/api/contacts/:contactId").get(authCtrl.requireSignin,authCtrl.hasAuthorization, contactCtrl.read);
