@@ -5,7 +5,7 @@ import errorHandler from "./error.handler.js";
 const create = async (req, res) => {
   const contact = new Contact(req.body);
   try {
-    console.log(req);
+    contact.owner = req.profile;
     await contact.save();
     return res.status(200).json({
       message: "Successfully added contact!",

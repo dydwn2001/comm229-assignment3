@@ -1,5 +1,5 @@
 
-export default function Education() {
+export default function NewEducation() {
   return (
     <div>
       <h2>Education</h2>

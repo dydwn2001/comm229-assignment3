@@ -5,6 +5,7 @@ import errorHandler from "./error.handler.js";
 const create = async (req, res) => {
   const education = new Education(req.body);
   try {
+    education.owner = req.profile;
     await education.save();
     return res.status(200).json({
       message: "Successfully added education!",

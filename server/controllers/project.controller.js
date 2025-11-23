@@ -5,6 +5,7 @@ import errorHandler from "./error.handler.js";
 const create = async (req, res) => {
   const project = new Project(req.body);
   try {
+    project.owner = req.profile;
     await project.save();
     return res.status(200).json({
       message: "Successfully added project!",

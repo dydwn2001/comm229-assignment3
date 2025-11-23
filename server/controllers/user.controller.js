@@ -72,4 +72,13 @@ const remove = async (req, res) => {
     });
   }
 };
-export default { create, userByID, read, list, remove, update };
+const isAdmin = (req, res, next) => {
+  const isAdmin = req.profile && req.profile.admin;
+  if (!isAdmin) {
+    return res.status("403").json({
+      error: "user is not an Admin",
+    });
+  }
+  next();
+};
+export default { create, userByID, read, list, remove, update, isAdmin };

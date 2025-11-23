@@ -1,5 +1,5 @@
 
-import profilePic from './assets/me.jpg'
+import profilePic from '../src/assets/me.jpg'
 
 export default function About()
 {
@@ -13,4 +13,3 @@ export default function About()
     );
 
 }
-

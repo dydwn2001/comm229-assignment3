@@ -1,10 +1,13 @@
 import express from "express";
+import userCtrl from "../controllers/user.controller.js";
+import authCtrl from "../controllers/auth.controller.js";
 import contactCtrl from "../controllers/contact.controller.js";
 const router = express.Router();
-router.route("/api/contacts").post(contactCtrl.create);
-router.route("/api/contacts").get(contactCtrl.list);
+router.route("/api/contacts/:userId").post(authCtrl.requireSignin, contactCtrl.create);
+router.route("/api/contacts/:userId").get(userCtrl.isAdmin,contactCtrl.list);
 router.param("contactId", contactCtrl.contactByID);
-router.route("/api/contacts/:contactId").get(contactCtrl.read);
-router.route("/api/contacts/:contactId").put(contactCtrl.update);
-router.route("/api/contacts/:contactId").delete(contactCtrl.remove);
+router.route("/api/contacts/:contactId").get(authCtrl.requireSignin,authCtrl.hasAuthorization, contactCtrl.read);
+router.route("/api/contacts/:userId/:contactId").put(userCtrl.isAdmin,contactCtrl.update);
+router.route("/api/contacts/:userId/:contactId").delete(userCtrl.isAdmin,contactCtrl.remove);
+router.param("userId", userCtrl.userByID);
 export default router;

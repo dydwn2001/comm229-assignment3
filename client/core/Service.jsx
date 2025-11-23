@@ -1,5 +1,4 @@
-
-export default function services() {
+export default function Service() {
   return (
     <div>
       

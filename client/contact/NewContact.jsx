@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 
-export default function Contact() {
+export default function NewContact() {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [contactNumber, setContactNumber] = useState("");

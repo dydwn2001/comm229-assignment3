@@ -1,7 +1,7 @@
 
 import { Routes, Route } from "react-router-dom"
-import MainRouter from './MainRouter.jsx'
-import Nav from './Nav.jsx'
+import MainRouter from '../MainRouter.jsx'
+import Nav from '../core/Menu.jsx'
 function App() {
   
 

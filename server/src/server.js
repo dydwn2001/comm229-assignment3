@@ -1,29 +1,36 @@
-import express from 'express';
-import helmet from 'helmet';
-import cors from 'cors';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import ContactCtrl from '../routes/contact.routes.js'
-import qualificationCtrl from '../routes/qualifications.routes.js'
-import projectCtrl from '../routes/projects.routes.js'
-import userCtrl from '../routes/user.routes.js'
-import authCtrl from '../routes/auth.routes.js'
+import express from "express";
+import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
+import compress from "compression";
+import cors from "cors";
+import helmet from "helmet";
+import ContactRoutes from '../routes/contact.routes.js'
+import qualificationRoutes from '../routes/qualifications.routes.js'
+import projectRoutes from '../routes/projects.routes.js'
+import userRoutes from '../routes/user.routes.js'
+import authRoutes from '../routes/auth.routes.js'
 import config from "../../config/config.js";
+import mongoose from "mongoose";
 
 
-dotenv.config();
+
 
 const app = express();
 const port = config.port || 3000;
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use('/',ContactRoutes)
+app.use('/',qualificationRoutes)
+app.use('/',projectRoutes)
+app.use('/',userRoutes)
+app.use('/',authRoutes)
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(compress());
 app.use(helmet());
 app.use(cors());
-app.use('/',ContactCtrl)
-app.use('/',qualificationCtrl)
-app.use('/',projectCtrl)
-app.use('/',userCtrl)
-app.use('/',authCtrl)
 app.get('/', (req, res) =>{
   
 
