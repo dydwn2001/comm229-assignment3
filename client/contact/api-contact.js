@@ -1,6 +1,6 @@
 const create = async (params, credentials, contact) => {
   try {
-    let response = await fetch("/api/contacts", {
+    let response = await fetch("/api/contacts"+ params.userId, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -24,24 +24,10 @@ const list = async (signal) => {
     console.log(err);
   }
 };
-const listByOwner = async (params, credentials, signal) => {
-  try {
-    let response = await fetch("/api/shops/by/" + params.userId, {
-      method: "GET",
-      signal: signal,
-      headers: {
-        Accept: "application/json",
-        Authorization: "Bearer " + credentials.t,
-      },
-    });
-    return response.json();
-  } catch (err) {
-    console.log(err);
-  }
-};
+
 const read = async (params, signal) => {
   try {
-    let response = await fetch("/api/shop/" + params.shopId, {
+    let response = await fetch("/api/contacts" + params.contactId, {
       method: "GET",
       signal: signal,
     });
@@ -50,15 +36,15 @@ const read = async (params, signal) => {
     console.log(err);
   }
 };
-const update = async (params, credentials, shop) => {
+const update = async (params, credentials, contact) => {
   try {
-    let response = await fetch("/api/shops/" + params.shopId, {
+    let response = await fetch("/api/contacts" + params.contactId, {
       method: "PUT",
       headers: {
         Accept: "application/json",
         Authorization: "Bearer " + credentials.t,
       },
-      body: shop,
+      body: contact,
     });
     return response.json();
   } catch (err) {
@@ -67,7 +53,7 @@ const update = async (params, credentials, shop) => {
 };
 const remove = async (params, credentials) => {
   try {
-    let response = await fetch("/api/shops/" + params.shopId, {
+    let response = await fetch("/api/contacts" + params.contactId, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
@@ -80,4 +66,4 @@ const remove = async (params, credentials) => {
     console.log(err);
   }
 };
-export { create, list, listByOwner, read, update, remove };
+export { create, list, read, update, remove };
