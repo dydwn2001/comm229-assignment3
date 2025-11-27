@@ -1,0 +1,186 @@
+{
+    "title": "portfolio menu",
+    "steps": [
+        {
+            "type": "setViewport",
+            "width": 1536,
+            "height": 729,
+            "deviceScaleFactor": 1,
+            "isMobile": false,
+            "hasTouch": false,
+            "isLandscape": false
+        },
+        {
+            "type": "navigate",
+            "url": "http://localhost:5173/",
+            "assertedEvents": [
+                {
+                    "type": "navigation",
+                    "url": "http://localhost:5173/",
+                    "title": "Vite + React"
+                }
+            ]
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/ABOUT[role=\"button\"]"
+                ],
+                [
+                    "a:nth-of-type(2) > button"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/header/div/a[2]/button"
+                ],
+                [
+                    "pierce/a:nth-of-type(2) > button"
+                ],
+                [
+                    "text/About"
+                ]
+            ],
+            "offsetY": 32.25,
+            "offsetX": 37.13751220703125
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/SERVICE[role=\"button\"]"
+                ],
+                [
+                    "a:nth-of-type(3) > button"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/header/div/a[3]/button"
+                ],
+                [
+                    "pierce/a:nth-of-type(3) > button"
+                ],
+                [
+                    "text/Service"
+                ]
+            ],
+            "offsetY": 26.25,
+            "offsetX": 32.89996337890625
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/EDUCATION[role=\"button\"]"
+                ],
+                [
+                    "a:nth-of-type(4) > button"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/header/div/a[4]/button"
+                ],
+                [
+                    "pierce/a:nth-of-type(4) > button"
+                ],
+                [
+                    "text/Education"
+                ]
+            ],
+            "offsetY": 32.25,
+            "offsetX": 56.887451171875
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/PROJECT[role=\"button\"]"
+                ],
+                [
+                    "a:nth-of-type(5) > button"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/header/div/a[5]/button"
+                ],
+                [
+                    "pierce/a:nth-of-type(5) > button"
+                ],
+                [
+                    "text/Project"
+                ]
+            ],
+            "offsetY": 25.25,
+            "offsetX": 36.875
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/CONTACT[role=\"button\"]"
+                ],
+                [
+                    "a:nth-of-type(6) > button"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/header/div/a[6]/button"
+                ],
+                [
+                    "pierce/a:nth-of-type(6) > button"
+                ],
+                [
+                    "text/Contact"
+                ]
+            ],
+            "offsetY": 25.25,
+            "offsetX": 27.7249755859375
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/SIGN UP[role=\"button\"]"
+                ],
+                [
+                    "a:nth-of-type(7) > button"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/header/div/a[7]/button"
+                ],
+                [
+                    "pierce/a:nth-of-type(7) > button"
+                ],
+                [
+                    "text/Sign up"
+                ]
+            ],
+            "offsetY": 19.25,
+            "offsetX": 35.2999267578125
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/SIGN IN[role=\"button\"]"
+                ],
+                [
+                    "a:nth-of-type(8) > button"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/header/div/a[8]/button"
+                ],
+                [
+                    "pierce/a:nth-of-type(8) > button"
+                ],
+                [
+                    "text/Sign In"
+                ]
+            ],
+            "offsetY": 15.25,
+            "offsetX": 12.9249267578125
+        }
+    ]
+}

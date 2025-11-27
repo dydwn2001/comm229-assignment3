@@ -1,12 +1,12 @@
-const create = async (params, credentials, contact) => {
+const create = async (params, credentials, education) => {
   try {
-    let response = await fetch("/api/qualifications", {
+    let response = await fetch("/api/educations" + params.userId, {
       method: "POST",
       headers: {
         Accept: "application/json",
         Authorization: "Bearer " + credentials.t,
       },
-      body: contact,
+      body: education,
     });
     return response.json();
   } catch (err) {
@@ -15,7 +15,7 @@ const create = async (params, credentials, contact) => {
 };
 const list = async (signal) => {
   try {
-    let response = await fetch("/api/qualifications", {
+    let response = await fetch("/api/educations", {
       method: "GET",
       signal: signal,
     });
@@ -27,7 +27,7 @@ const list = async (signal) => {
 
 const read = async (params, signal) => {
   try {
-    let response = await fetch("/api/qualifications" + params.contactId, {
+    let response = await fetch("/api/educations" + params.educationId, {
       method: "GET",
       signal: signal,
     });
@@ -36,15 +36,15 @@ const read = async (params, signal) => {
     console.log(err);
   }
 };
-const update = async (params, credentials, shop) => {
+const update = async (params, credentials, education) => {
   try {
-    let response = await fetch("/api/qualifications" + params.contactId, {
+    let response = await fetch("/api/educations" + params.educationId, {
       method: "PUT",
       headers: {
         Accept: "application/json",
         Authorization: "Bearer " + credentials.t,
       },
-      body: shop,
+      body: education,
     });
     return response.json();
   } catch (err) {
@@ -53,7 +53,7 @@ const update = async (params, credentials, shop) => {
 };
 const remove = async (params, credentials) => {
   try {
-    let response = await fetch("/api/qualifications" + params.contactId, {
+    let response = await fetch("/api/educations" + params.educationId, {
       method: "DELETE",
       headers: {
         Accept: "application/json",

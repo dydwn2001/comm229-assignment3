@@ -11,13 +11,15 @@ import userRoutes from '../routes/user.routes.js'
 import authRoutes from '../routes/auth.routes.js'
 import config from "../../config/config.js";
 import mongoose from "mongoose";
+import path from "path";
+const CURRENT_WORKING_DIR = process.cwd();
 
 
 
 
 const app = express();
 const port = config.port || 3000;
-
+app.use(express.static(path.join(CURRENT_WORKING_DIR, "dist/app")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/',ContactRoutes)
