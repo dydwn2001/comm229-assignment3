@@ -22,7 +22,8 @@ export default function Project() {
 
   return (
     <div>
-      <p>🚧 Projects under construction. Grab a hard hat and check back soon! </p>
+      <p>🚧 Projects under construction. Grab a hard hat and check back soon!</p>
+      <p>that would be a lot of things going on soon!</p>
       
       
     </div>
