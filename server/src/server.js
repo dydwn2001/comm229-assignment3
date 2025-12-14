@@ -34,11 +34,7 @@ app.use(cookieParser());
 app.use(compress());
 app.use(helmet());
 app.use(cors());
-app.get('/', (req, res) =>{
-  
 
-  res.json({"message": "Welcome to My Application Portfolio" });
-})
 app.get(/.*/, (req, res) => { 
   res.sendFile(path.join(CURRENT_WORKING_DIR, "dist/app", "index.html"));  
 });
