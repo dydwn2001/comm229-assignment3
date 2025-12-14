@@ -19,9 +19,6 @@ const CURRENT_WORKING_DIR = process.cwd();
 
 const app = express();
 const port = config.port || 3000;
-app.get(/.*/, (req, res) => { 
-  res.sendFile(path.join(CURRENT_WORKING_DIR, "dist/app", "index.html"));  
-});
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/',ContactRoutes)
@@ -36,7 +33,9 @@ app.use(cookieParser());
 app.use(compress());
 app.use(helmet());
 app.use(cors());
-
+app.get(/.*/, (req, res) => { 
+  res.sendFile(path.join(CURRENT_WORKING_DIR, "dist/app", "index.html"));  
+});
 
 
 // app.get('/', async(req, res) => {
